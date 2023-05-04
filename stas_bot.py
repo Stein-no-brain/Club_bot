@@ -4,9 +4,13 @@ from aiogram.types import ChatJoinRequest
 import sqlite3
 import logging
 import asyncio
-from config import token1, Chat
 
-CHANNEL_ID = Chat
+from config1 import Config, load_config
+
+config: Config = load_config()
+BOT_TOKEN: str = config.tg_bot.token
+
+CHANNEL_ID = -1001793387741
 def in_database(user_id):
     # Создаем подключение к базе данных SQLite
     conn = sqlite3.connect('database.db')
@@ -35,7 +39,7 @@ async def approve_request(chat_join: ChatJoinRequest, bot: Bot):
 
 async def start():
     logging.basicConfig(level=logging.DEBUG)
-    bot: Bot = Bot(token=token1)
+    bot: Bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
     dp.chat_join_request.register(approve_request, F.chat.id == CHANNEL_ID)
 
