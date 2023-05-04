@@ -4,10 +4,14 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import sqlite3
 import logging
 import asyncio
-from config import token2, Chat
 
-chat_id = Chat
-bot = Bot(token=token2)
+from config2 import Config, load_config
+
+config: Config = load_config()
+BOT_TOKEN: str = config.tg_bot.token
+
+chat_id = -1001793387741
+bot = Bot(token=BOT_TOKEN)
 # storage = MemoryStorage()
 dp = Dispatcher()
 scheduler = AsyncIOScheduler
