@@ -1,6 +1,8 @@
 import sqlite3
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, request
+import logging
+
 def update_or_create_user(username):
     # Создаем подключение к базе данных SQLite
     conn = sqlite3.connect('database.db')
@@ -59,11 +61,11 @@ def handle_webhook():
 
 if __name__ == '__main__':
     # Создаем планировщик
-    scheduler = BackgroundScheduler()
+    # scheduler = BackgroundScheduler()
     # Запускаем задачу каждые 5 минут
-    scheduler.add_job(decrement_sub_time, 'interval', hours=24)
-    scheduler.start()
-
+    # scheduler.add_job(decrement_sub_time, 'interval', hours=24)
+    # scheduler.start()
+    logging.basicConfig(level=logging.DEBUG)
     app.run()
 
 
