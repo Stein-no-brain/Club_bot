@@ -10,8 +10,8 @@ from config1 import Config, load_config
 config: Config = load_config()
 BOT_TOKEN: str = config.tg_bot.token
 
-# CHANNEL_ID = -1001793387741
-CHANNEL_ID = -1001910656909
+CHANNEL_ID = -1001793387741
+# CHANNEL_ID = -1001910656909
 def in_database(user_id):
     # Создаем подключение к базе данных SQLite
     conn = sqlite3.connect('database.db')
